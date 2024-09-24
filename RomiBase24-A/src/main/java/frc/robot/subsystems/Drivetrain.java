@@ -2,7 +2,7 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.util.sendable.SendableRegistry;
+// import edu.wpi.first.util.sendable.SendableRegistry;
 import edu.wpi.first.wpilibj.BuiltInAccelerometer;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -20,24 +20,26 @@ public class Drivetrain extends SubsystemBase {
   private final Spark mRightMotor = new Spark(1);
 
   // The Romi has onboard encoders that are hardcoded
-  // to use DIO pins 4/5 and 6/7 for the left and right
+  // to DIO pins 4/5 and 6/7 for the left and right
   private final Encoder mLeftEncoder = new Encoder(4, 5);
   private final Encoder mRightEncoder = new Encoder(6, 7);
 
-  // Set up the differential drive controller
+  // instance differential drive controller
   private final DifferentialDrive mDiffDrive =
       new DifferentialDrive(mLeftMotor, mRightMotor);
 
-  // Set up the RomiGyro
+  // instance RomiGyro
   private final RomiGyro mGyro = new RomiGyro();
 
-  // Set up the BuiltInAccelerometer
+  // Setup BuiltInAccelerometer
   private final BuiltInAccelerometer mAccelerometer = new BuiltInAccelerometer();
 
-  /** Creates a new Drivetrain. unclear purpose of Sendable Regis */
+  /** Creates a new Drivetrain. unclear purpose of Sendable Registry
+   *  -- works fine without this
+   */
   public Drivetrain() {
-    SendableRegistry.addChild(mDiffDrive, mLeftMotor);
-    SendableRegistry.addChild(mDiffDrive, mRightMotor);
+    // SendableRegistry.addChild(mDiffDrive, mLeftMotor);
+    // SendableRegistry.addChild(mDiffDrive, mRightMotor);
 
     // We need to invert one side of the drivetrain so that (+) volts
     // result in both sides moving forward. Depending on how your
@@ -81,9 +83,7 @@ public class Drivetrain extends SubsystemBase {
     return (getLeftDistanceInch() + getRightDistanceInch()) / 2.0;
   }
 
-  /**
-   * The acceleration in the X-axis.
-   *
+  /*
    * @return The acceleration of the Romi along the X-axis in Gs
    */
   public double getAccelX() {
@@ -91,8 +91,6 @@ public class Drivetrain extends SubsystemBase {
   }
 
   /**
-   * The acceleration in the Y-axis.
-   *
    * @return The acceleration of the Romi along the Y-axis in Gs
    */
   public double getAccelY() {
@@ -100,8 +98,6 @@ public class Drivetrain extends SubsystemBase {
   }
 
   /**
-   * The acceleration in the Z-axis.
-   *
    * @return The acceleration of the Romi along the Z-axis in Gs
    */
   public double getAccelZ() {
@@ -139,4 +135,4 @@ public class Drivetrain extends SubsystemBase {
     // This method will be called once per scheduler run
   }
 
-}
+} // end class

@@ -53,7 +53,7 @@ public class RobotContainer {
   /*Use this method to define your button->command mappings.
    */
   private void configureButtonBindings() {
-    // Default command is arcade drive. This will run unless another
+    // Default command is ArcadeDrive. This will run unless another
     // command is scheduled over it.
     mDrivetrain.setDefaultCommand(new ArcadeDrive(mDrivetrain));
 

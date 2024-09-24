@@ -1,4 +1,6 @@
-// RomiBase24 -A
+// RomiBase24 -A  
+
+// a simplified and better commented mod of default RomiRef. template
 
 package frc.robot;
 
@@ -14,7 +16,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-    // Instantiate RC--will perform button bindings, and put
+    // Instantiate RC-- set button bindings, and put
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
   }
@@ -70,4 +72,5 @@ public class Robot extends TimedRobot {
   /** This function is called periodically during test mode. */
   @Override
   public void testPeriodic() {}
-}
+
+}  // end class
