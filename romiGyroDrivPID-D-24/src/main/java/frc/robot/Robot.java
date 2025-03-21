@@ -129,9 +129,9 @@ public class Robot extends TimedRobot {
     // the delta tolerance ensures the robot is stable at the
     // setpoint before it's counted as reaching the reference
     // unclear what vT units are here as this a position controller
-    piDist.setTolerance(2, 20);
+    piDist.setTolerance(2);  // ? delete 2nd param
 
-    piDriv.setTolerance(2, 20);
+    piDriv.setTolerance(2);
     // degree pos. Tol., deg/sec rate Tol.
 
     pidTurn.enableContinuousInput(-180, 180);
