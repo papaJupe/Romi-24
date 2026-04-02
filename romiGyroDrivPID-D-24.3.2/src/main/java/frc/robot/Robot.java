@@ -99,7 +99,7 @@ public class Robot extends TimedRobot {
     // Example of onboard IO buttons doing something
     Trigger onboardButtonA = new Trigger
                          (m_onboardIO::getButtonAPressed);
-    onboardButtonA /// may need RP to call scheduler
+    onboardButtonA
         .whileTrue(new PrintCommand("onbord A Press"))
         .whileFalse(new PrintCommand("onbord A Release"));
 
@@ -129,9 +129,9 @@ public class Robot extends TimedRobot {
     // the delta tolerance ensures the robot is stable at the
     // setpoint before it's counted as reaching the reference
     // unclear what vT units are here as this a position controller
-    piDist.setTolerance(2, 20);
+    piDist.setTolerance(2);
 
-    piDriv.setTolerance(2, 20);
+    piDriv.setTolerance(2);
     // degree pos. Tol., deg/sec rate Tol.
 
     pidTurn.enableContinuousInput(-180, 180);
@@ -140,7 +140,7 @@ public class Robot extends TimedRobot {
 
   // This function is called every robot packet, no matter the mode.
   @Override
-  public void robotPeriodic() { // normally, in cmd/subsys framewk:
+  public void robotPeriodic() { // normally in cmd/subsys framewk:
     // calls the Scheduler <-- responsible for polling buttons, adding
     // newly-scheduled commands, running now-scheduled commands, removing
     // finished or interrupted commands, and running subsystem periodics.
@@ -261,7 +261,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopInit() {
-    // This confirms that the autonomous code has stopped,. If you want
+    // This confirms that the autonomous code has stopped. If you want
     // auto cmd to continue until interrupted by another command, remove
     // this line or comment it out.
     if (m_autoSelected != null) { // if auto never activated, don't do resets
